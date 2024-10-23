@@ -188,7 +188,7 @@
             @scroll="leftFixedScrollAction"
             :scroll-top="leftFiexScrollTop"
             class="zb-table-body-inner"
-            :style=" `height: calc(100% - ${showSummary?80:40}px)`">
+	    :style=" `height: calc(100% - ${showSummary?80:40} - ${showHeader?0:40}px)`">	
           <view class="zb-table-fixed">
             <view class="zb-table-tbody">
               <view
@@ -669,7 +669,7 @@ export default {
         this.isLoadMore = true
         this.$emit('pullUpLoading')
         let that = this
-        this.pullUpLoading&&this.pullUpLoading.call(this.$parent.$parent, (type)=>{
+        this.pullUpLoading&&this.pullUpLoading.call(this.$parent, (type)=>{
           that.isLoadMore = false
           if(type==='ok'){
             that.completeLoading=true
